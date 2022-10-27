@@ -16,8 +16,8 @@ recordRoutes.get('/',(req,res) =>{
     res.send("Hello");
 })
 
-recordRoutes.get('/get/users', (req, res) =>{
-  dbo.connection.useDb('MariajuanaDb').collection("Users").find({})
+recordRoutes.get('/records', (req, res) =>{
+  dbo.connection.useDb('MariajuanaDb').collection("Usuario").find({})
   .toArray(function (err, result) {
     if (err) throw err;
     res.json(result);
@@ -25,17 +25,19 @@ recordRoutes.get('/get/users', (req, res) =>{
   
 });
 
-recordRoutes.get('/records', (req, res) =>{
-    dbo.connection.useDb('MariajuanaDb').collection("Personas").find({})
-    .toArray(function (err, result) {
-      if (err) throw err;
-      res.json(result);
-    });
-    
+
+recordRoutes.get('/get/Usuarios', (req, res) =>{
+  dbo.connection.useDb('MariajuanaDb').collection("Usuario").find({})
+  .toArray(function (err, result) {
+    if (err) throw err;
+    res.json(result);
+  });
+  
 });
+
 
 recordRoutes.get('/productos', (req, res) =>{
-  dbo.connection.useDb('MariajuanaDb').collection("Productos").find({})
+  dbo.connection.useDb('MariajuanaDb').collection("Producto").find({})
   .toArray(function (err, result) {
     if (err) throw err;
     res.json(result);
@@ -43,7 +45,7 @@ recordRoutes.get('/productos', (req, res) =>{
   
 });
 
-recordRoutes.post('/add/user', (req, res) =>{
+recordRoutes.post('/add/usuario', (req, res) =>{
     let myobj = {
         nombre: req.body.nombre,        
         apellido: req.body.apellido,
@@ -55,7 +57,7 @@ recordRoutes.post('/add/user', (req, res) =>{
         rol : req.body.rol
       };
       console.log(req.body);
-    dbo.connection.useDb('MariajuanaDb').collection("Users").insertOne(myobj, function (err, result) {
+    dbo.connection.useDb('MariajuanaDb').collection("Usuario").insertOne(myobj, function (err, result) {
         if (err) console.log (err);
         res.json(result);
       });

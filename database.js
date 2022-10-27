@@ -1,9 +1,6 @@
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const mongoose = require('mongoose')
 const MONGODB_URI = "mongodb+srv://admin:KqDZTqjODQhGh8VU@mariajuana.ufrijyx.mongodb.net/?retryWrites=true&w=majority"
-
-
-
 try {
   mongoose.connect(MONGODB_URI)
   console.log("Connected to ", mongoose.onnection);
