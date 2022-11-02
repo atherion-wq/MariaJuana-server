@@ -30,8 +30,7 @@ recordRoutes.get('/get/Usuarios', (req, res) =>{
   .toArray(function (err, result) {
     if (err) throw err;
     res.json(result);
-  });
-  
+  }); 
 });
 
 recordRoutes.get('/productos', (req, res) =>{
@@ -60,7 +59,30 @@ recordRoutes.post('/add/usuario', (req, res) =>{
         res.json(result);
       });
 });
+
+
+
+
+recordRoutes.post('/add/producto', (req, res) =>{
+  let myobj = {
+      nombre: req.body.nombre,        
+      precio: req.body.precio,
+      estado: req.body.estado,
+      categoria: req.body.categoria,
+      url : req.body.url,
+      cantidad : req.body.cantidad,
+      descripcion : req.body.descripcion,
+    };
+  dbo.connection.useDb('MariajuanaDb').collection("Producto").insertOne(myobj, function (err, result) {
+      if (err) console.log (err);
+      res.json(result);
+    });
+});
  
+
+
+
+
 recordRoutes.get('/preguntas', (req, res) =>{
   dbo.connection.useDb('MariajuanaDb').collection("Pregunta").aggregate(
     [{$lookup:{from :"Usuario",localField:"usuario",foreignField:"_id", as: "usuario"}}])
@@ -77,8 +99,7 @@ recordRoutes.post('/add/pregunta', (req, res) =>{
       contenido:req.body.contenido,        
       usuario: o_id,
       respuesta:  req.body.respuesta
-    };
-    
+    }; 
   dbo.connection.useDb('MariajuanaDb').collection("Pregunta").insertOne(myobj, function (err, result) {
       if (err) console.log (err);
       res.json(result);
@@ -100,7 +121,7 @@ recordRoutes.get('/promociones', (req, res) =>{
       if (err) throw err;
       res.json(result);
     });
-});
+}); 
 
 
 module.exports = recordRoutes;
