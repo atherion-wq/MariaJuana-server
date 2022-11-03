@@ -78,6 +78,25 @@ recordRoutes.post('/add/producto', (req, res) =>{
       res.json(result);
     });
 });
+
+recordRoutes.post('/producto/actualizar', (req, res) =>{  
+  dbo.connection.useDb('MariajuanaDb').collection("Producto")
+  .updateOne({_id: ObjectId(req.body._id)},{$set:
+    {
+      nombre: req.body.name,
+      price: req.body.price,
+      estado: req.body.estado,
+      categoria: req.body.categoria,
+      imagen: req.body.imagen,
+      cantidad:req.body.cantidad,
+      descripcion: req.body.descripcion,
+    }}, function(err,result){
+    if (err) console.log (err);
+    res.json(result);
+  })
+});
+
+
  
 
 
