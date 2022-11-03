@@ -84,7 +84,7 @@ recordRoutes.post('/producto/actualizar', (req, res) =>{
   .updateOne({_id: ObjectId(req.body._id)},{$set:
     {
       nombre: req.body.nombre,
-      price: req.body.price,
+      precio: req.body.precio,
       estado: req.body.estado,
       categoria: req.body.categoria,
       imagen: req.body.imagen,
