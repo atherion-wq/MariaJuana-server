@@ -69,7 +69,7 @@ recordRoutes.post('/add/producto', (req, res) =>{
       precio: req.body.precio,
       estado: req.body.estado,
       categoria: req.body.categoria,
-      url : req.body.url,
+      imagen : req.body.imagen,
       cantidad : req.body.cantidad,
       descripcion : req.body.descripcion,
     };
