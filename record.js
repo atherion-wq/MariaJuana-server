@@ -83,7 +83,7 @@ recordRoutes.post('/producto/actualizar', (req, res) =>{
   dbo.connection.useDb('MariajuanaDb').collection("Producto")
   .updateOne({_id: ObjectId(req.body._id)},{$set:
     {
-      nombre: req.body.name,
+      nombre: req.body.nombre,
       price: req.body.price,
       estado: req.body.estado,
       categoria: req.body.categoria,
