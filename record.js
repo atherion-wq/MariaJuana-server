@@ -10,6 +10,7 @@ const dbo = require("./database");
  
 // This help convert the id from string to ObjectId for the _id.
 const ObjectId = require("mongodb").ObjectId;
+const mongoose = require('mongoose');
  
 // This section will help you get a list of all the records.
 recordRoutes.get('/',(req,res) =>{
@@ -95,6 +96,8 @@ recordRoutes.delete('/promocion/borrar', (req, res) => {
     res.json(result);
   });
 });
+
+
 
 
 
