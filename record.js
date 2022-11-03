@@ -60,6 +60,41 @@ recordRoutes.post('/add/usuario', (req, res) =>{
       });
 });
 
+recordRoutes.post('/add/promocion', (req, res) =>{
+  let myobj = {
+      descuento: req.body.descuento,        
+      productoId: mongoose.Types.ObjectId(req.body.productoId),
+      inicio: req.body.inicio,
+      fin: req.body.fin,
+      descripcion : req.body.descripcion,
+    };
+  dbo.connection.useDb('MariajuanaDb').collection("Promocion").insertOne(myobj, function (err, result) {
+      if (err) console.log (err);
+      res.json(result);
+    });
+});
+
+recordRoutes.post('/promocion/actualizar', (req, res) =>{  
+  dbo.connection.useDb('MariajuanaDb').collection("Promocion")
+  .updateOne({_id: ObjectId(req.body._id)},{$set:
+    {
+      descuento: req.body.descuento,        
+      productoId: mongoose.Types.ObjectId(req.body.productoId),
+      inicio: req.body.inicio,
+      fin: req.body.fin,
+      descripcion : req.body.descripcion,
+    }}, function(err,result){
+    if (err) console.log (err);
+    res.json(result);
+  })
+});
+
+recordRoutes.delete('/promocion/borrar', (req, res) => {
+  dbo.connection.useDb('MariajuanaDb').collection("Promocion").deleteOne({_id: ObjectId(req.body._id)}, function (err, result) {
+    if (err) console.log (err);
+    res.json(result);
+  });
+});
 
 
 
