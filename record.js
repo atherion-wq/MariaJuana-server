@@ -96,6 +96,13 @@ recordRoutes.post('/producto/actualizar', (req, res) =>{
   })
 });
 
+recordRoutes.delete('/producto/borrar', (req, res) => {
+  dbo.connection.useDb('MariajuanaDb').collection("Producto").deleteOne({_id: ObjectId(req.body._id)}, function (err, result) {
+    if (err) console.log (err);
+    res.json(result);
+  });
+});
+
 
  
 
