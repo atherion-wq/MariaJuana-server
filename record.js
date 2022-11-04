@@ -97,9 +97,34 @@ recordRoutes.delete('/promocion/borrar', (req, res) => {
   });
 });
 
+recordRoutes.post('/add/factura', (req, res) =>{
+  let myobj = {
+      id: req.body.id,        
+      usuario: req.body.idUsuario,
+      fecha: req.body.fecha,
+      monto: req.body.monto,
+    };
+    console.log(req.body);
+  dbo.connection.db.collection("Factura").insertOne(myobj, function (err, result) {
+      if (err) throw err;
+      res.json(result);
+    });
+});
 
-
-
+recordRoutes.post('/add/compra', (req, res) =>{
+  let myobj = {
+      idFactura: req.body.idFactura,        
+      producto: req.body.producto,
+      precio: req.body.precio,
+      cantidad: req.body.cantidad,
+    };
+    console.log(req.body);
+  dbo.connection.db.collection("Compra").insertOne(myobj, function (err, result) {
+      if (err) throw err;
+      res.json(result);
+    });
+});
+  
 
 recordRoutes.post('/add/producto', (req, res) =>{
   let myobj = {
