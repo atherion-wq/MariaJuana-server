@@ -105,7 +105,7 @@ recordRoutes.post('/add/factura', (req, res) =>{
       monto: req.body.monto,
     };
     console.log(req.body);
-  dbo.connection.db.collection("Factura").insertOne(myobj, function (err, result) {
+  dbo.connection.useDb('MariajuanaDb').collection("Factura").insertOne(myobj, function (err, result) {
       if (err) throw err;
       res.json(result);
     });
@@ -119,7 +119,7 @@ recordRoutes.post('/add/compra', (req, res) =>{
       cantidad: req.body.cantidad,
     };
     console.log(req.body);
-  dbo.connection.db.collection("Compra").insertOne(myobj, function (err, result) {
+  dbo.connection.useDb('MariajuanaDb').collection("Compra").insertOne(myobj, function (err, result) {
       if (err) throw err;
       res.json(result);
     });
