@@ -69,7 +69,7 @@ recordRoutes.post('/add/promocion', (req, res) =>{
       fin: req.body.fin,
       descripcion : req.body.descripcion,
     };
-  dbo.connection.useDb('MariajuanaDb').collection("Promocion").insertOne(myobj, function (err, result) {
+    dbo.connection.useDb('MariajuanaDb').collection("Promocion").insertOne(myobj, function (err, result) {
       if (err) console.log (err);
       res.json(result);
     });
@@ -105,8 +105,8 @@ recordRoutes.post('/add/factura', (req, res) =>{
       monto: req.body.monto,
     };
     console.log(req.body);
-  dbo.connection.useDb('MariajuanaDb').collection("Factura").insertOne(myobj, function (err, result) {
-      if (err) throw err;
+    dbo.connection.useDb('MariajuanaDb').collection("Factura").insertOne(myobj, function (err, result) {
+    if (err) throw err;
       res.json(result);
     });
 });
