@@ -43,6 +43,24 @@ recordRoutes.get('/productos', (req, res) =>{
   
 });
 
+recordRoutes.get('/facturas', (req, res) =>{
+  dbo.connection.useDb('MariajuanaDb').collection("Factura").find({})
+  .toArray(function (err, result) {
+    if (err) throw err;
+    res.json(result);
+  });
+  
+});
+
+recordRoutes.get('/compras', (req, res) =>{
+  dbo.connection.useDb('MariajuanaDb').collection("Compra").find({})
+  .toArray(function (err, result) {
+    if (err) throw err;
+    res.json(result);
+  });
+  
+});
+
 recordRoutes.post('/add/usuario', (req, res) =>{
     let myobj = {
         nombre: req.body.nombre,        
